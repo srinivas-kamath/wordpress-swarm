@@ -1,0 +1,76 @@
+version: "3.8"
+services:
+        wordpress_mysql:
+            image: srinivaskamath/swarm-images:wordpress_mysql
+            deploy:
+                replicas: 1
+                update_config:
+                    parallelism: 1
+                    delay: 10s
+                restart_policy:
+                    condition: on-failure
+            secrets:
+                - mysql_root_password
+                - mysql_database
+                - mysql_user
+                - mysql_password
+            environment:
+                - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/mysql_root_password
+                - MYSQL_DATABASE_FILE=/run/secrets/mysql_database
+                - MYSQL_USER_FILE=/run/secrets/mysql_user
+                - MYSQL_PASSWORD_FILE=/run/secrets/mysql_password
+            networks:
+                - wordpress_backend
+        wordpress_php:
+            image: srinivaskamath/swarm-images:wordpress_php
+            deploy:
+                replicas: 1
+                update_config:
+                    parallelism: 1
+                    delay: 10s
+                restart_policy:
+                    condition: on-failure
+            secrets:
+                - wordpress_db_host
+            environment:
+                - WORDPRESS_DB_HOST_FILE=/run/secrets/wordpress_db_host
+            depends_on:
+                - wordpress_mysql
+            networks:
+                - wordpress_backend
+                - wordpress_frontend
+        wordpress_nginx:
+            image: srinivaskamath/swarm-images:wordpress_nginx
+            deploy:
+                replicas: 3
+                update_config:
+                    parallelism: 1
+                    delay: 10s
+                restart_policy:
+                    condition: on-failure
+            depends_on:
+                - wordpress_mysql
+                - wordpress_php
+            networks:
+                - wordpress_frontend
+            ports:
+                - "80:80"
+networks:
+    wordpress_frontend:
+        name: wordpress_frontend
+        driver: overlay
+    wordpress_backend:
+        name: wordpress_backend
+        driver: overlay
+
+secrets:
+    mysql_root_password:
+        external: true
+    mysql_database:
+        external: true
+    mysql_user:
+        external: true
+    mysql_password:
+        external: true
+    wordpress_db_host:
+        external: true

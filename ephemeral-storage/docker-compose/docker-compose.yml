@@ -1,0 +1,48 @@
+version: "3.8"
+services:
+        wordpress_mysql:
+            build:
+                context: ../mysql
+                dockerfile: Dockerfile
+            environment:
+                - MYSQL_ROOT_PASSWORD=<random-strong-password>
+                - MYSQL_DATABASE=wordpress
+                - MYSQL_USER=wordpress-user
+                - MYSQL_PASSWORD=<random-strong-password>
+            image: wordpress_mysql
+            container_name: wordpress_mysql
+            networks:
+                - wordpress_backend
+        wordpress_php:
+            build:
+                context: ../php
+                dockerfile: Dockerfile
+            environment:
+                - WORDPRESS_DB_HOST=wordpress_mysql
+            depends_on:
+                - wordpress_mysql
+            image: wordpress_php
+            container_name: wordpress_php
+            networks:
+                - wordpress_backend
+                - wordpress_frontend
+        wordpress_nginx:
+            build:
+                context: ../nginx
+                dockerfile: Dockerfile
+            depends_on:
+                - wordpress_mysql
+                - wordpress_php
+            image: wordpress_nginx
+            container_name: wordpress_nginx
+            networks:
+                - wordpress_frontend
+            ports:
+                - "80:80"
+networks:
+    wordpress_frontend:
+        name: wordpress_frontend
+        driver: bridge
+    wordpress_backend:
+        name: wordpress_backend
+        driver: bridge
