@@ -1,4 +1,6 @@
-To setup the containers to run in swarm mode; we will need to make some configurations prior to running the "docker service" commands like creating secrets and clearing out the trail of the procedure in this scenario :-
+To setup the containers to run in swarm mode; we will need to make some configurations prior to running the "docker service" commands, like creating secrets and clearing out the trail of the procedure in this scenario :-
+
+The Best place to test this out ---> https://labs.play-with-docker.com/
 
 The Steps :-
 
