@@ -2,7 +2,7 @@ For the Compose file to run as a stack; we will need to make some configurations
 
 The Best place to test this out ---> https://labs.play-with-docker.com/
 
-First, download this repo into your Downloads directory 
+First, download this repo
 
         $ mkdir /docker && cd /docker/ && git clone https://github.com/srinivas-kamath/wordpress-swarm.git
 
