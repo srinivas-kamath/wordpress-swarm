@@ -42,6 +42,6 @@ So; the way that your requests will be routed now are :-
 
 ![Request Route](https://github.com/srinivas-kamath/wordpress-swarm/blob/main/ephemeral-storage/images/request-route.png)
 
-Once the containers are up and running check your wordpress setup by hitting the Host-ip on 80 port which; "wordpress_nginx" container should accept and proxy the request to "wordpress_php" container and greet you with a wordpress-initial setup page.
+Once the containers are up and running, check your wordpress setup by hitting the Host-ip on 80 port which; "wordpress_nginx" container should accept and proxy the request to "wordpress_php" container and greet you with a wordpress-initial setup page.
 
 On the wordpress-initial setup page; add the database name, username, password and database hostname for initial-setup as specified in the environment variable for "wordpress_mysql" and "wordpress_php" container and the wordpress installation should complete successfully and you should be able to see the default wordpress page on hitting the host-ip.
