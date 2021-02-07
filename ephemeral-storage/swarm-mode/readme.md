@@ -29,9 +29,9 @@ Once you have run the string in all the remote nodes that you want to add to thi
         $ sudo docker node ls
 
         ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS      ENGINE VERSION
-        33xq9e56vz42etk496gtmylpj *   node1               Ready               Active              Leader              19.03.11
-        hd8jspx78s4em8l6mnk5yedjq     node2               Ready               Active                                  19.03.11
-        j6us2nj96vq5u2i14g5oevi6j     node3               Ready               Active                                  19.03.11
+        33xq9e56vz42etk496gtmylpj *   node1               Ready               Active              Leader              20.10.0
+        hd8jspx78s4em8l6mnk5yedjq     node2               Ready               Active                                  20.10.0
+        j6us2nj96vq5u2i14g5oevi6j     node3               Ready               Active                                  20.10.0
 
 Now, We create 2 different overlay networks to isolate the mysql container from the web-server container without denying access to the php code container :-
 
