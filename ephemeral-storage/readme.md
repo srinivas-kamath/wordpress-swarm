@@ -4,17 +4,17 @@ The Best place to test this out ---> https://labs.play-with-docker.com/
 
 First, download this repo into your Downloads directory 
 
-        $ cd /home/`whoami`/Downloads/ && git clone https://github.com/srinivas-kamath/wordpress-swarm.git
+        $ mkdir /docker && cd /docker/ && git clone https://github.com/srinivas-kamath/wordpress-swarm.git
 
 Next, we will build the images from the dockerfiles shared in the sub-folders :-
 
-        $ cd /home/`whoami`/Downloads/wordpress-swarm/ephemeral-storage/mysql/
+        $ cd /Docker/wordpress-swarm/ephemeral-storage/mysql/
         $ sudo docker build --no-cache --tag wordpress_mysql .
 
-        $ cd /home/`whoami`/Downloads/wordpress-swarm/ephemeral-storage/php/
+        $ cd /Docker/wordpress-swarm/ephemeral-storage/php/
         $ sudo docker build --no-cache --tag wordpress_php .
 
-        $ cd /home/`whoami`/Downloads/wordpress-swarm/ephemeral-storage/nginx/
+        $ cd /Docker/wordpress-swarm/ephemeral-storage/nginx/
         $ sudo docker build --no-cache --tag wordpress_nginx .
 
 Next, we will create 2 networks so that we can launch the containers in different networks to isolate the backend container from frontend containers :-
