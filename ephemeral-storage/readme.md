@@ -2,7 +2,7 @@ Sharing the commands to make this setup working in your system :-
 
 The Best place to test this out ---> https://labs.play-with-docker.com/
 
-First, download this repo into your Downloads directory 
+First, download this repo
 
         $ mkdir /docker && cd /docker/ && git clone https://github.com/srinivas-kamath/wordpress-swarm.git
 
