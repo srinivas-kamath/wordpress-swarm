@@ -1,7 +1,7 @@
 version: "3.8"
 services:
         wordpress_mysql:
-            image: srinivaskamath/swarm-images:wordpress_mysql
+            image: srinivaskamath/wordpress-swarm:wordpress_mysql
             deploy:
                 replicas: 1
                 update_config:
@@ -22,7 +22,7 @@ services:
             networks:
                 - wordpress_backend
         wordpress_php:
-            image: srinivaskamath/swarm-images:wordpress_php
+            image: srinivaskamath/wordpress-swarm:wordpress_php
             deploy:
                 replicas: 1
                 update_config:
@@ -40,7 +40,7 @@ services:
                 - wordpress_backend
                 - wordpress_frontend
         wordpress_nginx:
-            image: srinivaskamath/swarm-images:wordpress_nginx
+            image: srinivaskamath/wordpress-swarm:wordpress_nginx
             deploy:
                 replicas: 3
                 update_config:
