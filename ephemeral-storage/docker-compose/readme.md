@@ -33,7 +33,7 @@ NOTE :- The Database passwords shared above in the "MYSQL_ROOT_PASSWORD" and "MY
 Once the above steps are done; the next part is to just run the following commands :-
 
     $ cd /docker/wordpress-swarm/ephemeral-storage/docker-compose/
-    $ docker-compose up --detach
+    $ sudo docker-compose up --detach
 
 This last command will start building the images for the containers as well as launch all the 3 containers with all the required variables and configurations.
 
